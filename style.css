@@ -2,11 +2,20 @@ body {
   font-family: "Anonymous Pro", monospace;
   font-family: "Caveat", cursive;
   font-family: "Permanent Marker", cursive;
+  font-family: "Roboto Mono", monospace;
+  font-family: "Roboto Slab", serif;
+  background-image: url("rain drops.webp");
+  background-size: cover;
 }
 
 li {
   font-size: 24px;
   color: #596aca;
+}
+img {
+  max-width: 60px;
+  margin: 0;
+  padding: 0;
 }
 h3 {
   color: #ffaa2e;
@@ -17,15 +26,22 @@ h3 {
 ul {
   list-style: none;
 }
+.weather-app {
+  max-width: 70%;
+  margin: 10px auto;
+}
 .logo {
   font-size: 65px;
 }
+
 .city {
   color: #ab47bc;
-  background: #f6ecf8;
+  background-color: #f6ecf8;
+  display: block;
+  margin-right: 25%;
   font-style: italic;
-  margin-right: 65%;
 }
+
 .time {
   font-size: 16px;
   color: #1cb3a9;
@@ -51,6 +67,11 @@ ul {
   font-weight: 400;
   font-size: 40px;
 }
+.units {
+  font-size: 16px;
+  position: relative;
+  top: -16px;
+}
 .btn1 {
   background-color: #76d1cb;
   color: #ab47bc;
@@ -71,4 +92,8 @@ ul {
   background-color: #f4e711;
   color: #ffaa2e;
   border: 3px solid #ffaa2e;
+}
+.footer {
+  text-shadow: #ab47bc;
+  line-height: 5;
 }

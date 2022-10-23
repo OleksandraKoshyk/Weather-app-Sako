@@ -14,13 +14,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container weather-app">
       <div class="row align-items-end">
         <div class="col-auto align-self-start logo">👩‍💻</div>
         <div class="col-auto">
@@ -28,7 +30,7 @@
             <div class="col-auto">
               <input
                 type="text"
-                class="form-control form-control-lg"
+                class="form-control form-control-lg shadow"
                 id="city-input"
                 placeholder="What's your city?"
               />
@@ -36,7 +38,7 @@
             <div class="col-auto">
               <button
                 type="submit"
-                class="btn mb-3 btn-secondary btn-lg btn1"
+                class="btn mb-3 btn-secondary btn-lg btn1 shadow"
                 id="search"
               >
                 Search
@@ -47,25 +49,41 @@
         <div class="col-auto">
           <button
             type="submit"
-            class="btn mb-3 btn-secondary btn-lg btn2"
+            class="btn mb-3 btn-secondary btn-lg btn2 shadow"
             id="current"
           >
             Current
           </button>
         </div>
       </div>
-      <div class="card">
+      <div class="card shadow">
         <div class="card-body">
-          <h1 class="city" id="city">Zaporizhzhia</h1>
-          <h2 class="first-day" id="dayInWeek">Monday</h2>
+          <div class="row">
+            <div class="col-7 align-self-start">
+              <h1 class="city" id="city">Zaporizhzhia</h1>
+              <h2 class="first-day" id="dayInWeek">Monday</h2>
 
-          <span class="time">
-            <span id="hour">08</span>:<span id="minute">05</span>
-          </span>
-          <h3 id="weather">Sunny</h3>
-          <h2 class="temperature">
-            🌞 <span id="temperature">28</span> <span id="celsius">℃</span>
-          </h2>
+              <span class="time">
+                <span id="hour">08</span>:<span id="minute">05</span>
+              </span>
+              <h3 id="weather">Sunny</h3>
+              <h2 class="temperature">
+                <img src="rain_icon.png" />
+                <span id="temperature">28</span>
+                <span class="units"
+                  ><span id="celsius">℃ </span>|<a href="#" id="faren"> ℉</a>
+                </span>
+              </h2>
+            </div>
+            <div class="col-4 align-self-end">
+              <ul>
+                <li>Precipitation <span id="precipitation">80</span>%</li>
+                <li>Humidity <span id="humidity">40</span>%</li>
+                <li>Wind <span id="wind">15</span> km/h</li>
+              </ul>
+            </div>
+          </div>
+
           <br />
           <div class="row">
             <div class="col">
