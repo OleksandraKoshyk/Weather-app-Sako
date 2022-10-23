@@ -17,11 +17,24 @@ img {
   margin: 0;
   padding: 0;
 }
+h1 {
+  color: #ab47bc;
+  background-color: #f6ecf8;
+  display: block;
+  margin-right: 15%;
+  font-style: italic;
+}
+#country {
+  color: #76d1cb;
+}
 h3 {
   color: #ffaa2e;
   font-weight: 400;
   font-size: 22px;
   margin-bottom: 20px;
+}
+h3::first-letter {
+  text-transform: capitalize;
 }
 ul {
   list-style: none;
@@ -32,14 +45,6 @@ ul {
 }
 .logo {
   font-size: 65px;
-}
-
-.city {
-  color: #ab47bc;
-  background-color: #f6ecf8;
-  display: block;
-  margin-right: 25%;
-  font-style: italic;
 }
 
 .time {
@@ -96,7 +101,4 @@ ul {
 .footer {
   text-shadow: #ab47bc;
   line-height: 5;
-}
-#weather {
-  text-transform: capitalize;
 }

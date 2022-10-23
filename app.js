@@ -5,8 +5,7 @@ function handleSubmit(event) {
   search(cityUser);
 }
 function search(cityUser) {
-  let apiKey = "2ae2f19a65e443eebd09dd05cfe0af8a";
-  let urlApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityUser}&appid=${apiKey}&units=metric`;
+  let urlApi = `https://api.shecodes.io/weather/v1/current?query=${cityUser}&key=4e3d43265f7f3448fot5bf7a6b40260b&units=metric`;
   axios.get(urlApi).then(showTemp);
 }
 function showCurrent() {
@@ -15,24 +14,28 @@ function showCurrent() {
 function handlePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "2ae2f19a65e443eebd09dd05cfe0af8a";
-  let urlApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  let urlApi = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=4e3d43265f7f3448fot5bf7a6b40260b&units=metric`;
   axios.get(urlApi).then(showTemp);
 }
 
 function showTemp(response) {
-  let tempRound = Math.round(response.data.main.temp);
+  console.log(response.data);
+  console.log(response.data.temperature.current);
+  let tempRound = Math.round(response.data.temperature.current);
   let temperature = document.querySelector("#temperature");
   let weather = document.querySelector("#weather");
   let city = document.querySelector("#city");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let country = document.querySelector("#country");
 
   temperature.innerHTML = `${tempRound}`;
-  weather.innerHTML = response.data.weather[0].description;
-  city.innerHTML = response.data.name;
-  humidity.innerHTML = response.data.main.humidity;
-  wind.innerHTML = response.data.wind.speed;
+  weather.innerHTML = response.data.condition.description;
+  city.innerHTML = response.data.city;
+  humidity.innerHTML = response.data.temperature.humidity;
+  wind.innerHTML = Math.round(response.data.wind.speed);
+  country.innerHTML = response.data.country;
+
   console.log(response.data);
 }
 
