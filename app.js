@@ -25,9 +25,15 @@ function showTemp(response) {
   let temperature = document.querySelector("#temperature");
   let weather = document.querySelector("#weather");
   let city = document.querySelector("#city");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+
   temperature.innerHTML = `${tempRound}`;
-  weather.innerHTML = response.data.weather[0].main;
+  weather.innerHTML = response.data.weather[0].description;
   city.innerHTML = response.data.name;
+  humidity.innerHTML = response.data.main.humidity;
+  wind.innerHTML = response.data.wind.speed;
+  console.log(response.data);
 }
 
 function formatData() {

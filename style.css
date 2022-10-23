@@ -97,3 +97,6 @@ ul {
   text-shadow: #ab47bc;
   line-height: 5;
 }
+#weather {
+  text-transform: capitalize;
+}
