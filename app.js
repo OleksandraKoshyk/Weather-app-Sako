@@ -15,12 +15,11 @@ function handlePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let urlApi = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=4e3d43265f7f3448fot5bf7a6b40260b&units=metric`;
+  console.log(urlApi);
   axios.get(urlApi).then(showTemp);
 }
 
 function showTemp(response) {
-  console.log(response.data);
-  console.log(response.data.temperature.current);
   let tempRound = Math.round(response.data.temperature.current);
   let temperature = document.querySelector("#temperature");
   let weather = document.querySelector("#weather");
@@ -28,6 +27,7 @@ function showTemp(response) {
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let country = document.querySelector("#country");
+  let iconElement = document.querySelector("#icon");
 
   temperature.innerHTML = `${tempRound}`;
   weather.innerHTML = response.data.condition.description;
@@ -35,6 +35,46 @@ function showTemp(response) {
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = Math.round(response.data.wind.speed);
   country.innerHTML = response.data.country;
+
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.description);
+
+  if (
+    response.data.condition.icon === "shower-rain-day" ||
+    response.data.condition.icon === "shower-rain-night" ||
+    response.data.condition.icon === "rain-day" ||
+    response.data.condition.icon === "rain-night" ||
+    response.data.condition.icon === "thunderstorm-day" ||
+    response.data.condition.icon === "thunderstorm-night"
+  ) {
+    document.body.style.backgroundImage = "url('rain drops.webp')";
+  } else {
+    if (
+      response.data.condition.icon === "clear-sky-day" ||
+      response.data.condition.icon === "clear-sky-night"
+    ) {
+      document.body.style.backgroundImage = "url('sunny.jpg')";
+    } else if (
+      response.data.condition.icon === "snow-day" ||
+      response.data.condition.icon === "snow-night"
+    ) {
+      document.body.style.backgroundImage = "url('snow_image.webp')";
+    } else {
+      if (
+        response.data.condition.icon === "few-clouds-day" ||
+        response.data.condition.icon === "few-clouds-night" ||
+        response.data.condition.icon === "scattered-clouds-day" ||
+        response.data.condition.icon === "scattered-clouds-night" ||
+        response.data.condition.icon === "broken-clouds-day" ||
+        response.data.condition.icon === "broken-clouds-night"
+      ) {
+        document.body.style.backgroundImage = "url('clouds.webp')";
+      }
+    }
+  }
 
   console.log(response.data);
 }

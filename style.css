@@ -4,8 +4,8 @@ body {
   font-family: "Permanent Marker", cursive;
   font-family: "Roboto Mono", monospace;
   font-family: "Roboto Slab", serif;
-  background-image: url("rain drops.webp");
   background-size: cover;
+  background-image: url("white.png");
 }
 
 li {
@@ -13,9 +13,12 @@ li {
   color: #596aca;
 }
 img {
-  max-width: 60px;
+  width: 90px;
   margin: 0;
   padding: 0;
+  position: relative;
+  top: -10px;
+  left: -10px;
 }
 h1 {
   color: #ab47bc;
