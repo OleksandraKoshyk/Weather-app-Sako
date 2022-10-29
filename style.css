@@ -70,7 +70,7 @@ ul {
   color: #1cb3a9;
   font-style: italic;
 }
-.temperature {
+.temperature-block {
   color: #42a5f5;
   font-weight: 400;
   font-size: 40px;
@@ -104,4 +104,12 @@ ul {
 .footer {
   text-shadow: #ab47bc;
   line-height: 5;
+}
+.active {
+  color: #ab47bc;
+  cursor: default;
+  text-decoration: none;
+}
+.active:hover {
+  color: #ab47bc;
 }

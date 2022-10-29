@@ -7,6 +7,7 @@ function handleSubmit(event) {
 function search(cityUser) {
   let urlApi = `https://api.shecodes.io/weather/v1/current?query=${cityUser}&key=4e3d43265f7f3448fot5bf7a6b40260b&units=metric`;
   axios.get(urlApi).then(showTemp);
+  console.log(urlApi);
 }
 function showCurrent() {
   navigator.geolocation.getCurrentPosition(handlePosition);
@@ -29,13 +30,13 @@ function showTemp(response) {
   let country = document.querySelector("#country");
   let iconElement = document.querySelector("#icon");
 
-  temperature.innerHTML = `${tempRound}`;
+  temperature.innerHTML = tempRound;
   weather.innerHTML = response.data.condition.description;
   city.innerHTML = response.data.city;
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = Math.round(response.data.wind.speed);
   country.innerHTML = response.data.country;
-
+  celsiusTemperature = tempRound;
   iconElement.setAttribute(
     "src",
     `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
@@ -110,9 +111,31 @@ function formatData() {
     minute.innerHTML = `0${now.getMinutes()}`;
   }
 }
-formatData();
-search("Zaporizhzhia");
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temteratureElement = document.querySelector("#temperature");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  temteratureElement.innerHTML = Math.round(fahrenheitTemp);
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+}
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let temteratureElement = document.querySelector("#temperature");
+  temteratureElement.innerHTML = celsiusTemperature;
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+}
+
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", handleSubmit);
 let currentButton = document.querySelector("#current");
 currentButton.addEventListener("click", showCurrent);
+
+let celsiusTemperature = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+formatData();
+search("Zaporizhzhia");

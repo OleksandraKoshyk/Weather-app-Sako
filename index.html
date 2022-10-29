@@ -32,7 +32,8 @@
                 type="text"
                 class="form-control form-control-lg shadow"
                 id="city-input"
-                placeholder="What's your city?"
+                placeholder="Type a city..."
+                autocomplete="off"
               />
             </div>
             <div class="col-auto">
@@ -70,15 +71,20 @@
                 <span id="hour"> </span>:<span id="minute"> </span>
               </span>
               <h3 id="weather"></h3>
-              <h2 class="temperature">
+              <h2 class="temperature-block">
                 <img
-                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+                  src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
                   alt="#"
                   id="icon"
                 />
                 <span id="temperature"></span>
                 <span class="units"
-                  ><span id="celsius">℃ </span>|<a href="#" id="faren"> ℉</a>
+                  ><a href="#" id="celsius-link" class="active">℃ </a>|<a
+                    href="#"
+                    id="fahrenheit-link"
+                  >
+                    ℉</a
+                  >
                 </span>
               </h2>
             </div>
